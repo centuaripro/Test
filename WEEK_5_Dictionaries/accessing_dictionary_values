@@ -1,0 +1,28 @@
+
+car = dict(
+    brand = "Ford",
+    model = "Mustang",
+    enginelitre = 5.0,
+    transmission = "Manual"
+)
+
+print("\n")
+# You access values in a dictionary using a suquare bracket and the name of the key as a string within
+
+print(car["brand"])
+print("\n")
+
+person = {
+    "first_name": "John",
+    "last_name": "Doe",
+    "age": 50,
+    "pets":{"dog": "Freida" , "cat": "sox"},
+    "kids":["Joe", "Martha", "Sarah"]
+}
+
+print("What is the name of the second child")
+secondchild = (person["kids"] [1])
+print("Name of the second child is:", secondchild)
+print("\n")
+print("What is the name of the dog")
+print(person["pets"]["dog"])

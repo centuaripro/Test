@@ -1,0 +1,26 @@
+
+
+from pprint import pprint
+library = {
+    "The Hobbit":{
+        "author": "J.R.R. Tolkien",
+        "year": 1937,
+        "genre": "Fantansy",
+        "read": True,
+    },
+    "Dune": {
+        "author": "Frank Herbert",
+        "year": 1965,
+        "genre": "Fiction",
+        "read": False,
+    },
+}
+
+for bookTitle, bookDetails in library.items():
+    print("Book Title:", bookTitle )
+    print("Book Details:", bookDetails )
+
+    print("")
+    
+
+
