@@ -1,0 +1,20 @@
+
+#Step 2 -  Reading line by line ( Row by Row)
+
+file_ = open("files/Sample - Superstore.csv","r")
+header = file_.readline().strip()
+header = header.split(",")
+
+# Read all other lines
+for line in file_:
+    print(line.strip().split(","))
+    print("="*20)
+
+
+file_.close()
+
+# Read all files into a list
+with open('files\example.txt', 'r') as file:
+    lines = file.readlines()
+    print(lines)
+          

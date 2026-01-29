@@ -10,7 +10,7 @@
 
 # The Problem
 # We have goal data from 10 PL matches in a game week, and are required to:
-# 1. Count how many goals each team scored.
+# 1. Retrieve and display how many goals each team scored.
 # 2. Find the highest scoring teams and matches
 # 3. Calculate goal statistics (average goals per match, most prolific teams)
 # 4. Identify teams in good forms vs struggling teams.
@@ -50,7 +50,7 @@ gameweek_matches = [
      "home_goals": 1, "away_goals": 1, "venue": "Kenilworth Road"}
 ]
 
-print("\n PREMIER LEAGUE GAMEWEEK 18 ANALYSIS")
+print("\n ==========PREMIER LEAGUE GAMEWEEK 18 ANALYSIS==========")
 print("="*60)
 
 # STEP 1 Extract goals per team
@@ -72,6 +72,7 @@ for match in gameweek_matches:
    # get golas for away team
    team_goals[away_team] = away_goals
 
+print("Team_Goals:")
 pprint(team_goals)
 print("")
 
@@ -79,7 +80,7 @@ print("\nGOALS SCORED BY TEAM")
 for(team, goals) in team_goals.items():
    print(f"  {team}: {goals} goal(s)")
 
-# Step 2 Highest scoring teams and matches
+# Step 2a Highest scoring teams and matches
 
 goals_threshold = 3
 
@@ -91,23 +92,147 @@ for(teams, goals) in team_goals.items():
    if goals >= goals_threshold:
       highest_scoring_teams[teams] = goals
 
-      for game in gameweek_matches:
-         if game["home_team"] == teams or game["away_team"]  == teams:
-            temp_games = game.copy()
-            del temp_games["venue"]
-
-            if temp_games not in highest_scoring_matches:
-               highest_scoring_matches.append(temp_games)
-
-pprint(gameweek_matches)
-
+    
 print("\nHighest Scoring teams")
 pprint(highest_scoring_teams)
 
 
+# 2b -Highest scoring matches
+print("\n ========HIGHEST SCORING MATCHES ========")
+
+match_goals_threshold = 4
+highest_scoring_matches = []
+
+for match in gameweek_matches:
+    home_goals = match["home_goals"]
+    away_goals = match["away_goals"]
+    
+    if home_goals + away_goals >= match_goals_threshold:
+        __match = match.copy()
+        del __match["venue"]
+        del __match["match_id"]
+
+        highest_scoring_matches.append(__match)
 
 print("\nHighest Scoring matches")
 pprint(highest_scoring_matches)
+
+
+# Display the content of the 'highest_scoring_teams' and 'highest_scoring_matches' in a human-relatable formaat
+
+# for game in gameweek_matches:
+#     if game["home_team"] == teams or game["away_team"]  == teams:
+#         temp_games = game.copy()
+#         del temp_games["venue"]
+
+#         if temp_games not in highest_scoring_matches:
+#                highest_scoring_matches.append(temp_games)
+
+
+print("\n=========MATCH STATISTICS=============")
+
+total_goals= sum(team_goals.values())
+avg_goals_per_match = total_goals/len(gameweek_matches)
+
+for match in gameweek_matches:
+   home = match["home_team"]
+   away = match["away_team"]
+   home_goals = match["home_goals"]
+   away_goals = match["away_goals"]
+
+   total_match_goals = home_goals + away_goals
+   
+   # Display match result
+
+
+   if home_goals > away_goals:
+      result = f" ✓(home) WIN"
+   elif away_goals > home_goals:
+      result = f" ✓(away) WIN"
+   else:
+      result = f"🤝 Draw"
+
+
+   # Determine Entertainment rating
+
+   if total_match_goals >=5:
+      entertainment = "🔥 THRILLER"
+   elif total_match_goals >= 3:
+      entertainment = "😂 EXCITING"
+   elif total_match_goals == 0:
+      entertainment = " 😔BORING"
+   else:
+      entertainment = "✓ Decent"
+    
+
+   print(f"\n {home} {home_goals}-{away_goals} {away}")
+   print(f"{result} |{total_match_goals} goals")
+   print(f" Venue: {match['venue']}")  
+   print(entertainment)
+
+   # Step 4 - Team Form Classification
+   print("\n ========TEAM FORM CLASSFICATION ========")
+
+   # Classifications:
+   #1. Excellent form is for teams that score 3+ goals.
+   #2. Good form is for team that score 2 goals.
+   #3. Average form is for teams that score 1 goals.
+   #4. Poor form is for teams that score 0 goals
+
+   # Struggling teams = teams in average and poor form.
+   # Good teams = teams in good and excellent form
+
+excellent_form= {}
+good_form = {}
+average_form = {}
+poor_form = {}
+
+for(__team, __goals) in team_goals.items():
+   if __goals >= 3:
+      excellent_form[__team] = __goals
+   elif __goals == 2:
+      good_form[__team] = __goals
+   elif __goals == 1:
+      average_form[__team] = __goals
+   else:
+      poor_form[__team] = __goals
+
+print(f"\n EXCELLENT FORM (3+ goals): {len(excellent_form)} teams")
+for(team_, goals_) in excellent_form.items():
+   print(f"  {team_}: {goals_} goals_ -Title Contenders")
+
+print(f"\n GOOD FORM (2 goals): {len(good_form)} teams")
+for(team_, goals_) in good_form.items():
+   print(f"  {team_}: {goals_} goals_ -Good Form")
+
+print(f"\n AVERAGE FORM (1 goals): {len(average_form)} teams")
+for(team_, goals_) in average_form.items():
+   print(f"  {team_}: {goals_} goals_ -Average Form")
+
+print(f"\n POOR FORM (0 goals): {len(poor_form)} teams")
+for(team_, goals_) in poor_form.items():
+   print(f"  {team_}: {goals_} goals_ -Poor Form")
+     
+  
+# Good Form - Solid performance
+# Average Form - Needs Improvement
+# Poor Form - Major Concern
+
+scoring_teams = len(excellent_form) + len(average_form) + len(poor_form)
+scoring_rate = (scoring_teams/total_goals) * 100
+
+print(f"\n {scoring_rate:.0f}% teams scored this gameweek")
+
+    
+
+
+
+   
+
+
+   
+      
+   
 
     
 
