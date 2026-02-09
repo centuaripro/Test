@@ -19,7 +19,11 @@ test()
 
 print("\n I am below the function")
 
-def add(a,b): # When defining a function,the place-holder variables you place in between the bracket is called a parater
+# ---------------------------------------------------
+# Function with Parameters
+# When defining a function,the place-holder variables you place in between the bracket is called a parater
+# ---------------------------------------------------
+def add(a,b): 
     print(a + b)
     tuple = (a,b)
     print(tuple)
@@ -31,17 +35,21 @@ add(20,9) # When you call afunction, the values you place in between the bracket
 add(13,48)
 add(98,14)
 
-# Afunction being assigned to a variable
+# ---------------------------------------------------
+# Functions are first-class citizens in python
+# ---------------------------------------------------
+
+# 1. A function being assigned to a variable
 
 addition = add
 
-# Pass a function as an argument to other functions
+# 2. Pass a function as an argument to other functions
 def operations(a,args):
     return a(*args)
 
 operations(add, [12,5])
 
-# Return a function from anothe rfunction
+# 3. Return a function from anothe rfunction
 
 def _operation():
     def addition(values):
@@ -50,4 +58,17 @@ def _operation():
 
 result = _operation()([12,5])
 print(result)
+
+def calc():
+    return "Calculation"
+
+# 4. A function can be stored in a data structure like lists and dictionaries
+student = {
+    "name": "Chris Idakwo",
+    "gender": "Male",
+    "calcuate_score": calc,
+}
+
+student = ["calculate_scores"]()
     
+
