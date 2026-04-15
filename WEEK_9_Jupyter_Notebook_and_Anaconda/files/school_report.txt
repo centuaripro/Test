@@ -1,0 +1,41 @@
+SCHOOL REPORT 
+============================================================
+
+SCHOOL STATISTICS
+============================================================
+Total Number of Students: 20
+Score Mean: 81.1
+Score Median:81.9
+Score Standard Deviation: 7.8
+Score Range: from 59.5 to  93.2
+
+
+STUDENT RECOGNITION
+============================================================
+
+Best Performing Student: Olivia Williams
+
+
+Students Details Highlight
+============================================================
+Name                     Score    Attendance   Grade
+Olivia Williams          93.25    0.98                     A    
+Evelyn Jackson           91.25    0.96                     A    
+Emma Johnson             88.25    0.97                     B    
+Mia Gonzalez             87.25    0.97                     B    
+Isabella Rodriguez       86.5     0.93                     B    
+Ethan Thomas             85.5     0.91                     B    
+Amelia Taylor            85.25    0.94                     B    
+James Davis              84.75    0.94                     B    
+Benjamin Lopez           84.5     0.95                     B    
+Mason Wilson             82.25    0.92                     B    
+Ava Jones                81.5     0.92                     B    
+Sophia Miller            80.75    0.91                     B    
+Michael Martin           80.5     0.88                     B    
+Liam Smith               79.0     0.89                     C    
+Harper Anderson          76.25    0.83                     C    
+William Garcia           76.0     0.85                     C    
+Charlotte Hernandez      75.5     0.88                     C    
+Logan Martinez           74.75    0.86                     C    
+Alexander Moore          69.75    0.79                     D    
+Noah Brown               59.5     0.75                     E    
